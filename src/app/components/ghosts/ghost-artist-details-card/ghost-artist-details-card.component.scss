@@ -1,0 +1,29 @@
+$sg-bg-ghost-gradient: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 80%
+), #d5d5d5;
+
+
+.text-ghost {
+  background: $sg-bg-ghost-gradient;
+  background-repeat: repeat-y;
+  background-size: 100px 500px;
+  background-position: 0 0;
+  animation: shine 1.3s infinite;
+  height: 15px;
+  border-radius: 3px;
+  margin: 10px 0;
+  width: 60%;
+}
+
+.image-ghost {
+  background: $sg-bg-ghost-gradient;
+  background-repeat: repeat-y;
+  background-size: 100px 500px;
+  background-position: 0 0;
+  animation: shine 0.3s infinite;
+}
+
+

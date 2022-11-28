@@ -21,7 +21,7 @@
   </div>
 </section>
 
-<ng-container *ngIf="searchForm.controls.searchText.value !== '' else noSearch;">
+<ng-container *ngIf="searchForm.controls.searchText.value !== '' else startSearch;">
   <ng-container
     *ngIf="{
   searchResults: searchResults$ | async,
@@ -30,30 +30,36 @@
 
     <ng-container *ngIf="sr.searchResults as results else loading">
       <ng-container *ngIf="results.length > 0 else noData">
-        <ng-container *ngFor="let result of results">
-          {{result.name}}
-        </ng-container>
+        <div class="flex flex-row flex-wrap justify-center content-start">
+          <ng-container *ngFor="let result of results">
+            <app-artist-details-card [artistData]="result"></app-artist-details-card>
+          </ng-container>
+        </div>
       </ng-container>
 
-
       <ng-template #noData>
-        <p>No data...</p>
+        <app-no-results></app-no-results>
       </ng-template>
 
     </ng-container>
 
+    <div *ngIf="sr.searchError as error">
+      <app-error></app-error>
+    </div>
+
     <ng-template #loading>
-      <p>Loading...</p>
+      <div *ngIf="!sr.searchError" class="flex flex-row flex-wrap justify-center content-start">
+        <ng-container *ngFor="let i of [1, 2, 3, 4]">
+          <app-ghost-artist-details-card></app-ghost-artist-details-card>
+        </ng-container>
+      </div>
     </ng-template>
   </ng-container>
 
 </ng-container>
 
-<ng-template #noSearch>
-  <section class="content-center flex flex-col justify-center items-center p-2">
-    <img alt="404" class="w-1/4" src="assets/images/svgs/music_art.svg">
-    <p class="mt-12 font-extrabold	text-4xl">Type in the name of the artist to check out our playlist</p>
-  </section>
+<ng-template #startSearch>
+  <app-start-search></app-start-search>
 </ng-template>
 
 
