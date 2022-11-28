@@ -24,8 +24,6 @@ export class ArtistComponent implements OnInit {
     this.activeRoute.paramMap.subscribe((params: ParamMap) => {
       this.artistId = params.get('id');
 
-      console.log('Check id', this.artistId);
-
       this.artistDetails$ = this.deezerService.getArtistDetails(<string>this.artistId);
 
       this.artistTopTracks$ = this.deezerService.getArtistTopTracks(<string>this.artistId);
