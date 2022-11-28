@@ -12,6 +12,14 @@ export interface Artist {
   radio: boolean;
 }
 
+export interface Contributor extends Artist {
+  tracklist: string;
+  type: string;
+  role: string;
+}
+
 export interface SearchResponse {
   data: Artist[];
 }
+
+
