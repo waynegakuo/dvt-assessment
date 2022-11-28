@@ -1,0 +1,24 @@
+<section class="w-full">
+  <!-- Search -->
+  <div class="flex flex-col md:flex-row pb-4 items-center w-9/12">
+    <div class="flex my-3 px-4 w-full">
+      <div class="search-bar w-full">
+        <input [(ngModel)]="searchText"
+               class="w-full rounded py-1.5 px-4 focus:bg-indigo-100 focus:transition ease-in duration-150 border-2"
+               placeholder="Search for an artist" type="text">
+        <svg class="search-icon" fill="none" height="24" viewBox="0 0 24 24" width="24">
+          <path
+            d="M19.25 19.25L15.5 15.5M4.75 11C4.75 7.54822 7.54822 4.75 11 4.75C14.4518 4.75 17.25 7.54822 17.25 11C17.25 14.4518 14.4518 17.25 11 17.25C7.54822 17.25 4.75 14.4518 4.75 11Z"
+            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="1.5"></path>
+        </svg>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-center flex flex-col justify-center items-center p-2">
+  <img alt="404" class="w-1/4" src="assets/images/svgs/music_art.svg">
+  <p class="mt-12 font-extrabold	text-4xl">Type in the name of the artist to check out our playlist</p>
+</section>
