@@ -42,7 +42,7 @@ export class LandingPageComponent implements OnInit {
       defer(() => of(this.searchForm.controls.searchText.value)),
       this.searchForm.controls.searchText.valueChanges
     ).pipe(
-      debounceTime(300),
+      debounceTime(1000),
       distinctUntilChanged()
     );
 

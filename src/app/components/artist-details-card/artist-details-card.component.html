@@ -1,1 +1,19 @@
-<p>artist-details-card works!</p>
+<div (click)="onArtistCardClicked(artistData.id)"
+     class="bg-[#F8F8F7] shadow-xl rounded-lg overflow-hidden w-80 m-2 cursor-pointer">
+  <div [style.backgroundRepeat]="'no-repeat'" [style.backgroundSize]="'cover'"
+       [style.background]="'url('+artistData.picture_xl+')'" class="bg-cover h-48 w-full">
+  </div>
+  <div class="flex flex-col pt-2 p-5">
+    <div [style.backgroundRepeat]="'no-repeat'"
+         [style.backgroundSize]="'cover'" [style.background]="'url('+artistData.picture+')'"
+         class="bg-cover bg-center w-20 h-20 -mt-16 rounded-full border-4 border-[#F8F8F7]">
+    </div>
+    <div class="mt-3">
+      <div class="font-bold text-xl truncate overflow-hidden">{{artistData.name}}</div>
+      <div class="flex flex-col">
+        <p class="font-bold text-gray-600">{{artistData.nb_fan | number: "1.0-0"}} Fans</p>
+        <p class="text-xs font-bold text-gray-400 mt-2">{{artistData.nb_album | number: "1.0-0"}} Albums</p>
+      </div>
+    </div>
+  </div>
+</div>

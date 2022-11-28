@@ -1,0 +1,37 @@
+<ng-container *ngIf="artistDetails$ | async as artistDetails else loading">
+  <ng-container *ngIf="artistDetails else userNotFound">
+
+    <section class="content-center flex flex-col justify-center items-center p-2 m-auto">
+
+      <div class="bg-cover bg-center w-60 h-60 rounded-full border-4 border-[#F8F8F7]"
+           [style.background]="'url('+artistDetails.picture+')'" [style.backgroundSize]="'cover'"
+           [style.backgroundRepeat]="'no-repeat'">
+      </div>
+
+      <p class="mt-12 font-extrabold text-4xl">{{artistDetails.name}}</p>
+
+      <p class="font-bold text-2xl text-gray-600 mt-2">{{artistDetails.nb_fan | number: "1.0-0"}} Fans</p>
+      <p class="text-xl font-bold text-gray-400 mt-2">{{artistDetails.nb_album | number: "1.0-0"}} Albums</p>
+
+      <p class="mt-12 font-extrabold text-2xl">Top Tracks:</p>
+
+      <ng-container *ngIf="artistTopTracks$ | async as topTracks">
+        <ng-container *ngFor="let track of topTracks | slice: 0: 5">
+          <p>{{track.title}}</p>
+        </ng-container>
+      </ng-container>
+
+
+    </section>
+  </ng-container>
+
+  <ng-template #userNotFound>
+    <p>User not found...</p>
+  </ng-template>
+</ng-container>
+
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>
+
