@@ -8,7 +8,7 @@ export interface Track {
   title: string;
   title_short: string;
   title_version: string;
-  unseen: boolean;
+  unseen?: boolean;
   isrc: string;
   link: string;
   share: string;
@@ -16,18 +16,20 @@ export interface Track {
   track_position: number;
   disk_number: number;
   rank: number;
-  release_date: Date;
+  release_date: string;
   explicit_lyrics: boolean;
   explicit_content_lyrics: number;
   preview: string;
   bpm: number;
   gain: number;
-  available_countries?: List;
-  alternative: Track;
+  available_countries?: string[];
+  alternative?: Track;
   contributors: Contributor[];
   md5_image: string;
   artist: Artist;
   album: Album;
+  explicit_content_cover?: number;
+  type?: string;
 }
 
 export interface TrackResponse {
