@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, throwError} from "rxjs";
 import {Artist, SearchResponse} from "../../models/Artist/artist.model";
-import {map} from "rxjs/operators";
+import {catchError, map} from "rxjs/operators";
 import {Track, TrackResponse} from 'src/app/models/Track/track.model';
 
 @Injectable({
@@ -26,6 +26,9 @@ export class DeezerService {
       .pipe(
         map(data => {
           return data.data;
+        }),
+        catchError(() => {
+          return throwError(() => 'Cannot find artists');
         })
       )
   }
