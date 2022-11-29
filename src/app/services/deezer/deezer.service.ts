@@ -11,9 +11,9 @@ import {Track, TrackResponse} from 'src/app/models/Track/track.model';
 export class DeezerService {
 
 
-  deezerSearchArtistApi = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/search/artist';
+  deezerSearchArtistApi = 'https://proxy.cors.sh/https://api.deezer.com/search/artist';
 
-  deezerArtistDetailsApi = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/artist/';
+  deezerArtistDetailsApi = 'https://proxy.cors.sh/https://api.deezer.com/artist/';
 
   constructor(private http: HttpClient) {
   }
@@ -41,7 +41,7 @@ export class DeezerService {
 
   getArtistTopTracks(artistId: string): Observable<Track[]> {
     return this.http.get<TrackResponse>
-    (`https://cors-anywhere.herokuapp.com/https://api.deezer.com/artist/${artistId}/top?limit=50`)
+    (`https://proxy.cors.sh/https://api.deezer.com/artist/${artistId}/top?limit=50`)
       .pipe(
         map(data => {
           return data.data;

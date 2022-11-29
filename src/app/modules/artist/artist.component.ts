@@ -1,9 +1,10 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {DeezerService} from "../../services/deezer/deezer.service";
-import {Observable} from "rxjs";
+import {Observable, of} from "rxjs";
 import {Artist} from "../../models/Artist/artist.model";
 import {Track} from "../../models/Track/track.model";
+import {catchError, ignoreElements} from "rxjs/operators";
 
 @Component({
   selector: 'app-artist',
@@ -16,6 +17,7 @@ export class ArtistComponent implements OnInit {
   artistId!: string | null;
   artistDetails$!: Observable<Artist>;
   artistTopTracks$!: Observable<Track[]>;
+  artistDetailsError$!: Observable<{ message: string }>;
 
   constructor(private activeRoute: ActivatedRoute, private deezerService: DeezerService) {
   }
@@ -27,6 +29,14 @@ export class ArtistComponent implements OnInit {
       this.artistDetails$ = this.deezerService.getArtistDetails(<string>this.artistId);
 
       this.artistTopTracks$ = this.deezerService.getArtistTopTracks(<string>this.artistId);
+
+      this.artistDetailsError$ = this.artistDetails$
+        .pipe(
+          ignoreElements(),
+          catchError((err) => {
+            return of(err);
+          })
+        )
     })
   }
 

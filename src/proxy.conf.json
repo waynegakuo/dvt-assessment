@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://cors-anywhere.herokuapp.com/",
+    "target": "https://proxy.cors.sh/",
     "secure": false
   }
 }

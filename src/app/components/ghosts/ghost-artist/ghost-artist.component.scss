@@ -13,12 +13,39 @@ $bg-ghost-gradient: linear-gradient(
   width: 60%;
 }
 
-.image-ghost, .text-ghost {
+.image-ghost, .artist-name, .fans, .album, .tracks-title, .tracks {
   background: $bg-ghost-gradient;
   background-repeat: repeat-y;
   background-size: 100px 500px;
   background-position: 0 0;
   animation: shine 1.3s infinite;
+}
+
+
+.artist-name, .fans, .album, .tracks-title, .tracks {
+  height: 15px;
+  border-radius: 3px;
+  margin: 10px 0;
+}
+
+.artist-name {
+  width: 200px;
+}
+
+.fans {
+  width: 100px
+}
+
+.album {
+  width: 70px;
+}
+
+.tracks-title {
+  width: 150px;
+}
+
+.tracks {
+  width: 100px;
 }
 
 

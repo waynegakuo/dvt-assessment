@@ -7,11 +7,12 @@ import {LandingPageComponent} from './pages/landing-page/landing-page.component'
 import {NavbarComponent} from './shared/components/navbar/navbar.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { ArtistDetailsCardComponent } from './components/artist-details-card/artist-details-card.component';
-import { GhostArtistDetailsCardComponent } from './components/ghosts/ghost-artist-details-card/ghost-artist-details-card.component';
-import { NoResultsComponent } from './shared/components/no-results/no-results.component';
-import { StartSearchComponent } from './shared/components/start-search/start-search.component';
-import { ErrorComponent } from './shared/components/error/error.component';
+import {ArtistDetailsCardComponent} from './components/artist-details-card/artist-details-card.component';
+import {
+  GhostArtistDetailsCardComponent
+} from './components/ghosts/ghost-artist-details-card/ghost-artist-details-card.component';
+import {StartSearchComponent} from './shared/components/start-search/start-search.component';
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -20,16 +21,15 @@ import { ErrorComponent } from './shared/components/error/error.component';
     NavbarComponent,
     ArtistDetailsCardComponent,
     GhostArtistDetailsCardComponent,
-    NoResultsComponent,
-    StartSearchComponent,
-    ErrorComponent
+    StartSearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
