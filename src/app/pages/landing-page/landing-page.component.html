@@ -5,7 +5,7 @@
       <form [formGroup]="searchForm">
         <div class="search-bar w-full">
           <input
-            class="w-full rounded py-1.5 px-4 focus:bg-indigo-100 focus:transition ease-in duration-150 border-2"
+            class="search-input w-full rounded py-1.5 px-4 focus:bg-indigo-100 focus:transition ease-in duration-150 border-2"
             formControlName="searchText" placeholder="Search for an artist" type="text">
           <svg class="search-icon" fill="none" height="24" viewBox="0 0 24 24" width="24">
             <path
@@ -28,20 +28,24 @@
   searchError: searchResultError$ | async
   } as sr">
 
-    <ng-container *ngIf="sr.searchResults as results else loading">
-      <ng-container *ngIf="results.length > 0 else noData">
-        <div class="flex flex-row flex-wrap justify-center content-start">
-          <ng-container *ngFor="let result of results">
-            <app-artist-details-card [artistData]="result"></app-artist-details-card>
-          </ng-container>
-        </div>
+    <section class="artist-section">
+      <ng-container *ngIf="sr.searchResults as results else loading">
+        <ng-container *ngIf="results.length > 0 else noData">
+          <div class="flex flex-row flex-wrap justify-center content-start">
+            <ng-container *ngFor="let result of results">
+              <app-artist-details-card [artistData]="result"></app-artist-details-card>
+            </ng-container>
+          </div>
+        </ng-container>
+
+        <ng-template #noData>
+          <app-no-results></app-no-results>
+        </ng-template>
+
       </ng-container>
+    </section>
 
-      <ng-template #noData>
-        <app-no-results></app-no-results>
-      </ng-template>
 
-    </ng-container>
 
     <div *ngIf="sr.searchError as error">
       <app-error></app-error>
